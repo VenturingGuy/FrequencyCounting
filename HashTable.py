@@ -5,6 +5,7 @@ class HashTable:
   def __init__(self, size):
     self.size = size
     self.arr = self.create_arr(size)
+    print(self.arr)
 
 
   # 1️⃣ TODO: Complete the create_arr method.
@@ -13,9 +14,9 @@ class HashTable:
   # This method creates an array (list) of a given size and populates each of its elements with a LinkedList object.
 
   def create_arr(self, size):
-    new_array = [None] * size
-    for number in range(size):
-      new_array[number] = LinkedList()
+    new_array = []
+    for _ in range(size):
+      new_array.append(LinkedList())
     return new_array
 
 
@@ -26,11 +27,12 @@ class HashTable:
   # Hash functions are a function that turns each of these keys into an index value that we can use to decide where in our list each key:value pair should be stored. 
 
   def hash_func(self, key):
-    h = 0
-    # Goes through each character in the given key, returns the mod result of the sum of the key's value and the size of the table
-    for char in key:
-      h += ord(char)
-    return (h % self.size)
+    h = self.size
+    count = 0
+    for i in key:
+      count = ord(i)
+    index = count % h
+    return index
 
 
 
@@ -40,8 +42,7 @@ class HashTable:
 
   def insert(self, key, value):
     h = self.hash_func(key)
-    self.arr[h] = value
-
+    self.arr[h].append((key, value))
 
 
 
@@ -57,9 +58,7 @@ class HashTable:
   # erase: 2
 
   def print_key_values(self):
-    for i in self.arr:
-      print(i)
-    pass
-
+    for i in range(self.size):
+      self.arr[i].print_nodes
 
 
