@@ -5,7 +5,6 @@ class HashTable:
   def __init__(self, size):
     self.size = size
     self.arr = self.create_arr(size)
-    print(self.arr)
 
 
   # 1️⃣ TODO: Complete the create_arr method.
@@ -58,7 +57,7 @@ class HashTable:
   # erase: 2
 
   def print_key_values(self):
-    for i in range(self.size):
-      self.arr[i].print_nodes
+    for i in self.arr:
+      i.print_nodes()
 
 
